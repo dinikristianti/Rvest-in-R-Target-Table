@@ -1,0 +1,29 @@
+---
+title: "Rvest_Target_Table"
+author: "Prof. Dr. Suhartono, M. Kom @ Dini Kristianti, S. Kom"
+date: "6/2/2021"
+output: html_document
+---
+Halaman web target dengan data tabel
+
+Pada file R Vest ini, kita akan melihat situs web Daftar Hotel Di New York beserta Alamat yang tersedia. pada URL https://en.wikipedia.org/wiki/List_of_hotels_in_New_York_City
+
+
+Library yang di butuhkan adalah
+```{r}
+library(rvest)
+```
+
+```{r}
+library(dplyr)
+```
+
+Tampilan Tabel Yang di Scrapping
+```{r}
+wiki_link="https://en.wikipedia.org/wiki/List_of_hotels_in_New_York_City"
+wiki_page= read_html(wiki_link)
+data_table= wiki_page %>% html_nodes("table") %>%.[2] %>%
+html_table() %>% .[[1]]
+data_table
+```
+
